@@ -1,17 +1,19 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
 
 export function MovingTestimonials() {
   return (
-    <div className="h-[40rem] rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden">
-      <InfiniteMovingCards
-        items={testimonials}
-        direction="right"
-        speed="slow"
-        className=""
-      />
+    <div className="relative py-20 overflow-hidden">
+      <div className="h-[40rem] flex flex-col antialiased items-center justify-center relative">
+        <InfiniteMovingCards
+          items={testimonials}
+          direction="right"
+          speed="slow"
+          className="py-20"
+        />
+      </div>
     </div>
   );
 }
@@ -19,31 +21,37 @@ export function MovingTestimonials() {
 const testimonials = [
   {
     quote:
-      "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair.",
-    name: "Charles Dickens",
-    title: "A Tale of Two Cities",
+      "Westlake's cybersecurity solutions have transformed our security posture. Their proactive approach and advanced threat detection have kept our systems secure 24/7.",
+    name: "Sarah Chen",
+    title: "CTO, TechCorp Solutions",
+    rating: 5,
   },
   {
     quote:
-      "To be, or not to be, that is the question: Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune, Or to take Arms against a Sea of troubles, And by opposing end them: to die, to sleep.",
-    name: "William Shakespeare",
-    title: "Hamlet",
-  },
-  {
-    quote: "All that we see or seem is but a dream within a dream.",
-    name: "Edgar Allan Poe",
-    title: "A Dream Within a Dream",
+      "The team's expertise in cloud security is unmatched. They helped us implement a robust security framework that gives us peace of mind as we scale our operations.",
+    name: "Michael Rodriguez",
+    title: "Head of IT, Global Innovations Inc",
+    rating: 5,
   },
   {
     quote:
-      "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife.",
-    name: "Jane Austen",
-    title: "Pride and Prejudice",
+      "Outstanding service and support. Westlake's incident response team has been crucial in maintaining our security standards and meeting compliance requirements.",
+    name: "Emily Thompson",
+    title: "Security Director, Enterprise Systems",
+    rating: 5,
   },
   {
     quote:
-      "Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world.",
-    name: "Herman Melville",
-    title: "Moby-Dick",
+      "The implementation of Westlake's security solutions was seamless. Their team's dedication to our success and 24/7 support has been exceptional.",
+    name: "David Park",
+    title: "VP of Technology, DataFlow Corp",
+    rating: 5,
+  },
+  {
+    quote:
+      "Westlake's comprehensive security assessment revealed critical vulnerabilities we weren't aware of. Their remediation strategy has significantly enhanced our security.",
+    name: "Lisa Martinez",
+    title: "CISO, FinTech Solutions",
+    rating: 5,
   },
 ];

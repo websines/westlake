@@ -17,6 +17,9 @@ import {
   Lock,
   Clock,
   ArrowRight,
+  ArrowUpRight,
+  CheckCircle2,
+  ChevronRight,
 } from "lucide-react";
 import { AnimatedShinyTextDemo } from "@/components/AnimatedShinyText";
 import { CoverDemo } from "@/components/Cover";
@@ -47,7 +50,7 @@ const services = [
   },
   {
     icon: BarChart,
-    title: "Backup and Disaster Recovery",
+    title: "Backup & Recovery",
     description:
       "Ensure business continuity with reliable data backup and recovery solutions",
     pageLink: "/backup-and-disaster-recovery",
@@ -87,142 +90,164 @@ export default function Home() {
       <Navbar />
 
       <main className="flex-grow">
-        <section className="relative py-32 px-4 overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/images/img01.jpg"
-              alt="IT Services Background"
-              layout="fill"
-              objectFit="cover"
-              quality={100}
-              priority
-            />
-            <div className="absolute inset-0 bg-black opacity-60" />
+        {/* Hero Section */}
+        <section className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-b from-gray-900 via-gray-900 to-purple-900">
+          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/50 to-gray-900/80"></div>
+          
+          {/* Animated background elements */}
+          <div className="absolute inset-0">
+            <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/30 rounded-full mix-blend-screen filter blur-xl opacity-50 animate-pulse"></div>
+            <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-blue-500/30 rounded-full mix-blend-screen filter blur-xl opacity-50 animate-pulse delay-75"></div>
+            <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-violet-500/30 rounded-full mix-blend-screen filter blur-xl opacity-50 animate-pulse delay-150"></div>
           </div>
-          <div className="max-w-6xl mx-auto text-center relative z-10">
-            <AnimatedShinyTextDemo />
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 text-white leading-tight">
-              <CoverDemo />
-            </h1>
-            <p className="text-xl md:text-2xl mb-12 text-gray-200 max-w-3xl mx-auto leading-relaxed">
-              Empower your business with cutting-edge IT solutions and
-              unparalleled expertise
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <Button
-                size="lg"
-                className="bg-orange-500 hover:bg-orange-600 text-white text-lg px-8 py-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
-              >
-                <Link
-                  href="/meeting"
-                  className="flex flex-row gap-2 items-center justify-center"
-                >
-                  Book a Call
-                  <Zap className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="bg-white text-orange-500 hover:bg-orange-100 text-lg px-8 py-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
-              >
-                Explore Services
-              </Button>
-            </div>
-          </div>
-        </section>
 
-        <section className="py-24 px-4 bg-white">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center text-gray-800">
-              <WordPullUpDemo />
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {services.map((service, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col justify-between"
-                >
-                  <div>
-                    <service.icon className="h-16 w-16 text-orange-500 mb-6" />
-                    <h3 className="text-2xl font-semibold mb-4 text-gray-800">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-600 mb-6">{service.description}</p>
-                  </div>
-                  <Link
-                    href={service.pageLink}
-                    className="text-orange-500 hover:text-orange-600 font-medium flex items-center group"
-                  >
-                    Learn more
-                    <ArrowRight className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform" />
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-5xl mx-auto text-center">
+              <h1 className="text-5xl md:text-7xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-200 to-white animate-gradient">
+                Transform Your Business with Next-Gen IT Solutions
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
+                Empower your organization with cutting-edge technology solutions designed for the modern digital landscape
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <Button className="w-full sm:w-auto bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white hover:text-purple-900 text-lg py-6 px-8 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300">
+                  <Link href="/meeting" className="flex items-center gap-2">
+                    Schedule a Consultation
+                    <ArrowUpRight className="h-5 w-5" />
                   </Link>
-                </div>
-              ))}
+                </Button>
+                <Button variant="outline" className="w-full sm:w-auto text-white border-white/20 hover:bg-white/10 text-lg py-6 px-8 rounded-full">
+                  <Link href="#services" className="text-black hover:text-white flex items-center gap-2">
+                    Explore Services
+                    <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="py-24 px-4 bg-gradient-to-br from-orange-50 to-orange-100">
-          <div className="max-w-6xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-16 text-gray-800">
-              Our Creative Process
-            </h2>
+        {/* Services Section */}
+        <section id="services" className="py-24 px-4 bg-gradient-to-b from-gray-900 to-purple-900 relative">
+          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5"></div>
+          <div className="container mx-auto relative z-10">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-violet-400">
+                Comprehensive IT Solutions
+              </h2>
+              <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+                Tailored services to meet your organization's unique technology needs
+              </p>
+            </div>
+
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {process.map((step, index) => (
-                <div
-                  key={index}
-                  className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
-                >
-                  <step.icon className="h-16 w-16 text-orange-500 mb-6 mx-auto" />
-                  <h3 className="text-2xl font-semibold mb-4 text-gray-800">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-600">{step.description}</p>
+              {services.map((service, i) => (
+                <Link href={service.pageLink} key={i} className="group">
+                  <div className="relative">
+                    <div className="absolute inset-0.5 bg-gradient-to-r from-purple-500 to-violet-500 rounded-3xl blur opacity-20 group-hover:opacity-100 transition duration-500"></div>
+                    <div className="relative h-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:transform hover:scale-[1.02] transition-all duration-300">
+                      <div className="bg-gradient-to-br from-purple-500/20 to-violet-500/20 p-4 rounded-2xl w-16 h-16 mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <service.icon className="h-8 w-8 text-white" />
+                      </div>
+                      <h3 className="text-2xl font-bold mb-4 text-white">
+                        {service.title}
+                      </h3>
+                      <p className="text-white/70">
+                        {service.description}
+                      </p>
+                      <div className="mt-6 flex items-center text-purple-400 font-medium group-hover:text-purple-300 transition-colors">
+                        Learn More
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-2 transition-transform" />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Process Section */}
+        <section className="py-24 px-4 bg-gradient-to-b from-purple-900 to-gray-900 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5"></div>
+          <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-purple-500/5 to-transparent"></div>
+          <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-violet-500/5 to-transparent"></div>
+          <div className="container mx-auto relative z-10">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-violet-400">
+                Our Process
+              </h2>
+              <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+                A systematic approach to delivering exceptional IT solutions
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {process.map((step, i) => (
+                <div key={i} className="relative group">
+                  <div className="absolute inset-0.5 bg-gradient-to-r from-purple-500 to-violet-500 rounded-3xl blur opacity-30 group-hover:opacity-100 transition duration-500"></div>
+                  <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 h-full hover:transform hover:scale-[1.02] transition-all duration-300">
+                    <div className="bg-gradient-to-br from-purple-500/20 to-violet-500/20 p-4 rounded-2xl w-16 h-16 mb-6">
+                      <step.icon className="h-8 w-8 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4 text-white">
+                      {step.title}
+                    </h3>
+                    <p className="text-white/70">
+                      {step.description}
+                    </p>
+                    <div className="absolute -bottom-2 -right-2 w-12 h-12 bg-gradient-to-br from-purple-500 to-violet-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">
+                      {i + 1}
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="py-24 px-4 bg-white">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center text-gray-800">
-              What Our Clients Say
-            </h2>
-            <MovingTestimonials />
+        {/* Testimonials Section */}
+        <section className="relative py-24 overflow-hidden bg-gradient-to-b from-gray-900 to-purple-900">
+          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5"></div>
+          <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-purple-500/5 to-transparent"></div>
+          <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-violet-500/5 to-transparent"></div>
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-violet-400">
+                Trusted by Industry Leaders
+              </h2>
+              <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+                See what our clients say about our solutions and dedication to their success
+              </p>
+            </div>
           </div>
+          <MovingTestimonials />
         </section>
 
-        <section className="py-24 px-4 bg-gradient-to-br from-orange-50 to-orange-100 text-black relative overflow-hidden">
-          <ShootingStarsAndStarsBackgroundDemo />
-          <div className="max-w-4xl mx-auto text-center relative z-10 mt-8">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8">
-              Ready to transform your IT infrastructure?
-            </h2>
-            <p className="text-xl mb-12 leading-relaxed">
-              Let's work together to create a tailored solution for your
-              business.
-            </p>
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-white text-orange-500 hover:bg-orange-100 text-lg px-8 py-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
-            >
-              <Link
-                href="/meeting"
-                className="flex flex-row gap-2 items-center justify-center"
-              >
-                Book a Call
-                <Zap className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
+        {/* CTA Section */}
+        <section className="py-24 px-4 bg-gradient-to-b from-purple-900 to-gray-900 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5"></div>
+          <div className="container mx-auto relative z-10">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-violet-400">
+                Ready to Transform Your Business?
+              </h2>
+              <p className="text-xl text-gray-400 mb-12">
+                Let's discuss how our IT solutions can help you achieve your business goals
+              </p>
+              <div className="relative inline-block group">
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-violet-400 rounded-full blur opacity-30 group-hover:opacity-100 transition duration-500"></div>
+                <Button className="relative bg-gradient-to-r from-purple-600 to-violet-600 text-white hover:from-purple-700 hover:to-violet-700 text-xl py-8 px-16 rounded-full shadow-2xl hover:shadow-[0_20px_50px_rgba(139,_92,_246,_0.5)] transition-all duration-300">
+                  <Link href="/meeting" className="flex items-center gap-3 font-bold">
+                    Schedule a Consultation
+                    <ArrowUpRight className="h-6 w-6" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
           </div>
         </section>
-
-        {/* <section className="py-24 px-4 bg-gray-50">
-          <LetsMakeThingsHappenSection />
-        </section> */}
       </main>
 
       <Footer />

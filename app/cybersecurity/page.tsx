@@ -64,7 +64,7 @@ export default function Page() {
                     <ArrowUpCircle className="h-5 w-5" />
                   </Link>
                 </Button>
-                <Button variant="outline" className="text-white border-white hover:bg-white/10 text-lg py-6 px-8 rounded-full">
+                <Button variant="outline" className="text-black border-white hover:bg-white/10 text-lg py-6 px-8 rounded-full">
                   <Link href="#services" className="flex items-center gap-2">
                     Our Solutions
                     <Shield className="h-5 w-5" />
