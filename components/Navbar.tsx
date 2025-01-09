@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ArrowUpRight } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -41,48 +41,55 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      scrolled 
-        ? "bg-white/95 backdrop-blur-md shadow-lg" 
-        : "bg-transparent"
-    }`}>
+    <nav
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-gray-900/80 backdrop-blur-md border-b border-white/10"
+          : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           <div className="flex items-center">
-            <Link href="/" className="flex-shrink-0 flex items-center space-x-3 group">
-              <Image
-                src="/logos/logo.webp"
-                alt="Company Logo"
-                width={45}
-                height={45}
-                className="h-10 w-auto transition-transform duration-300 group-hover:scale-110"
-              />
-              <span className={`ml-2 text-xl font-bold tracking-tight ${
-                scrolled ? "text-gray-900" : "text-white"
-              } transition-colors duration-300`}>
+            <Link
+              href="/"
+              className="flex-shrink-0 flex items-center space-x-3 group"
+            >
+              <div className="relative">
+                <div className="absolute inset-0 bg-purple-500 rounded-full blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                <Image
+                  src="/logos/logo.webp"
+                  alt="Company Logo"
+                  width={45}
+                  height={45}
+                  className="h-10 w-auto relative transition-transform duration-300 group-hover:scale-110"
+                />
+              </div>
+              <span className="ml-2 text-xl font-bold tracking-tight text-white transition-colors duration-300">
                 WestLake
               </span>
             </Link>
           </div>
-          
-          <div className="hidden sm:ml-8 sm:flex sm:items-center sm:space-x-8">
+
+          <div className="hidden sm:ml-8 sm:flex sm:items-center sm:space-x-1">
             {navItems.map((item) =>
               item.subItems ? (
                 <DropdownMenu key={item.name}>
-                  <DropdownMenuTrigger className={`inline-flex items-center px-3 py-2 text-sm font-medium ${
-                    scrolled 
-                      ? "text-gray-700 hover:text-blue-600" 
-                      : "text-white/90 hover:text-white"
-                  } transition-colors duration-300`}>
+                  <DropdownMenuTrigger
+                    className="inline-flex items-center px-4 py-2 text-sm font-medium text-white/90 hover:text-white transition-colors duration-300 rounded-full hover:bg-white/10"
+                  >
                     {item.name}
-                    <ChevronDown className="ml-1 h-4 w-4" />
+                    <ChevronDown className="ml-1 h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent className="bg-white/95 backdrop-blur-md border-none shadow-lg rounded-xl p-2 animate-in fade-in-80 slide-in-from-top-5">
+                  <DropdownMenuContent className="bg-gray-900/95 backdrop-blur-md border border-white/10 shadow-xl rounded-xl p-2 animate-in fade-in-80 slide-in-from-top-5">
                     {item.subItems.map((subItem) => (
-                      <DropdownMenuItem key={subItem.name} className="focus:bg-gray-100/80">
+                      <DropdownMenuItem
+                        key={subItem.name}
+                        className="focus:bg-white/10"
+                      >
                         <Link
                           href={subItem.href}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:text-blue-600 transition-colors duration-200 rounded-lg"
+                          className="block px-4 py-2 text-sm text-white/90 hover:text-white transition-colors duration-200 rounded-lg"
                         >
                           {subItem.name}
                         </Link>
@@ -94,36 +101,35 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`inline-flex items-center px-3 py-2 text-sm font-medium ${
-                    scrolled 
-                      ? "text-gray-700 hover:text-blue-600" 
-                      : "text-white/90 hover:text-white"
-                  } transition-colors duration-300`}
+                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-white/90 hover:text-white transition-colors duration-300 rounded-full hover:bg-white/10"
                 >
                   {item.name}
                 </Link>
               )
             )}
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg transition-all duration-300 ml-4">
-              Book a Call
-            </Button>
+            <div className="ml-6">
+              <Button
+                className="bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white hover:text-purple-900 rounded-full transition-all duration-300"
+              >
+                <Link href="/meeting" className="flex items-center gap-2">
+                  Get Started
+                  <ArrowUpRight className="h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
           </div>
 
           <div className="flex items-center sm:hidden">
             <button
               type="button"
-              className={`inline-flex items-center justify-center p-2 rounded-lg ${
-                scrolled 
-                  ? "text-gray-700 hover:text-blue-600 hover:bg-gray-100/50" 
-                  : "text-white hover:text-white/80"
-              } focus:outline-none transition-colors duration-300`}
+              className="inline-flex items-center justify-center p-2 rounded-lg text-white/90 hover:text-white hover:bg-white/10 transition-colors duration-300"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               <span className="sr-only">Open main menu</span>
               {mobileMenuOpen ? (
-                <X className="h-6 w-6" aria-hidden="true" />
+                <X className="block h-6 w-6" aria-hidden="true" />
               ) : (
-                <Menu className="h-6 w-6" aria-hidden="true" />
+                <Menu className="block h-6 w-6" aria-hidden="true" />
               )}
             </button>
           </div>
@@ -132,48 +138,46 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       <div
-        className={`sm:hidden transition-all duration-300 ${
-          mobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 pointer-events-none"
-        }`}
+        className={`sm:hidden transition-all duration-300 ease-in-out ${
+          mobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+        } overflow-hidden bg-gray-900/95 backdrop-blur-md border-t border-white/10`}
       >
-        <div className="bg-white/95 backdrop-blur-md shadow-lg px-4 pt-2 pb-3">
-          <div className="space-y-1">
-            {navItems.map((item) => (
-              <div key={item.name}>
-                {item.subItems ? (
-                  <>
-                    <div className="px-3 py-2 text-base font-medium text-gray-900">
-                      {item.name}
-                    </div>
-                    {item.subItems.map((subItem) => (
-                      <Link
-                        key={subItem.name}
-                        href={subItem.href}
-                        className="block pl-6 pr-4 py-2 text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50/50 rounded-lg transition-colors duration-200"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {subItem.name}
-                      </Link>
-                    ))}
-                  </>
-                ) : (
+        <div className="px-4 pt-2 pb-3 space-y-1">
+          {navItems.map((item) =>
+            item.subItems ? (
+              <div key={item.name} className="space-y-1">
+                <div className="px-3 py-2 text-sm font-medium text-white/90">
+                  {item.name}
+                </div>
+                {item.subItems.map((subItem) => (
                   <Link
-                    href={item.href}
-                    className="block px-3 py-2 text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50/50 rounded-lg transition-colors duration-200"
-                    onClick={() => setMobileMenuOpen(false)}
+                    key={subItem.name}
+                    href={subItem.href}
+                    className="block px-3 py-2 text-sm text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors duration-200"
                   >
-                    {item.name}
+                    {subItem.name}
                   </Link>
-                )}
+                ))}
               </div>
-            ))}
-          </div>
-          <div className="pt-4 pb-3 border-t border-gray-200/70">
-            <div className="mt-3">
-              <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg transition-all duration-300">
-                Book a Call
-              </Button>
-            </div>
+            ) : (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="block px-3 py-2 text-sm text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-colors duration-200"
+              >
+                {item.name}
+              </Link>
+            )
+          )}
+          <div className="pt-4">
+            <Button
+              className="w-full bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white hover:text-purple-900 rounded-full transition-all duration-300"
+            >
+              <Link href="/meeting" className="flex items-center justify-center gap-2">
+                Get Started
+                <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </Button>
           </div>
         </div>
       </div>
